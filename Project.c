@@ -23,23 +23,90 @@ void displaymenu() {
     printf("6. Exit\n");
 }
 
-//function for print the value
+//function for print the Employees details
 void print(struct employee *ptr)
 {
     int i=1;
     while(ptr !=NULL)
     {
         printf("Employee:%d\n",i);
-        printf("Id:%d ",ptr->id);
-        printf("Name:%s ",ptr->name);
-        printf("Department:%s ",ptr->department);
-        printf("Designation:%s ",ptr->post);
-        printf("Salary:%f ",ptr->salary);
-        printf("Contact Info:%s ",ptr->contactinfo);
+        printf("Id:%d || ",ptr->id);
+        printf("Name:%s || ",ptr->name);
+        printf("Department:%s || ",ptr->department);
+        printf("Designation:%s || ",ptr->post);
+        printf("Salary:%f || ",ptr->salary);
+        printf("Contact Info:%s || ",ptr->contactinfo);
         i++;
         printf("\n");
         ptr=ptr->next;
     }
+}
+//add new employee
+//if use char type use a pointer ,not for the int
+struct employee *last(struct employee *head, int id, char *name, char *department, char *post, float salary, char *contactinfo)
+{
+    struct employee *ptr = (struct employee*)malloc(sizeof(struct employee));
+    ptr->id = id;
+    strcpy(ptr->name, name);
+    strcpy(ptr->department, department);
+    strcpy(ptr->post, post);
+    ptr->salary = salary;
+    strcpy(ptr->contactinfo, contactinfo);
+    struct employee *p = head;
+    while (p->next != NULL) {
+        p = p->next;
+    }
+    p->next = ptr;
+    ptr->next = NULL;
+    return head;
+}
+//delete from the first
+struct employee *dltfirst(struct employee *head)
+{
+    struct employee *t=head;
+    head=head->next;
+    free(t);
+    t=NULL;
+    return head;
+}
+//remove from the last
+struct employee *dltlast(struct employee *head)
+{
+    struct employee *t=head;
+    struct employee *r=head->next;
+    while(r->next != NULL)
+    {
+        t=t->next;
+        r=r->next;
+    }
+    t->next=NULL;
+    free(r);
+    return head;
+    
+}
+
+//remove from middle
+struct employee *dltmid(struct employee *head,int index)
+{
+    struct employee *t=head;
+    struct employee *t2;
+    //use >2 for set the t before the deletation node and dlt the index node
+    //use >1 for set the t in the index and dlt the after node
+    while(index >2)
+    {
+        t=t->next;
+        index--;
+        
+    }
+    t2=t->next;
+    if(t2->next==NULL)
+        {
+            head=dltlast(head);
+            return head;
+        }  
+    t->next=t2->next;
+    free(t2);
+    return head;
 }
 
 int main()
@@ -81,8 +148,14 @@ int main()
     strcpy(fourth->contactinfo, "01521704220");
     fourth->next = NULL;
 
-     int choice;
+     int choice,number;
      int button;
+     int id;
+     char name1[50];
+     char department1[50];
+     char post1[50];
+     float salary;
+     char contactinfo1[50];
     do {
         displaymenu();
         printf("Enter your choice: ");
@@ -93,21 +166,63 @@ int main()
             case 1:
                 printf("\nEmployee List:\n");
                 print(head);
+                printf("\n");
                 printf("1. Main menu\n");
                 printf("2. Exit\n");
                 printf("Enter your choice: ");
                 scanf("%d", &button);
-                if(button=2){
+                if(button==2){
                     return 0;
                 }
                 else
                 {
-                    break;
+                    continue;
                 }
-            case 2:
-                // Exit
-                printf("Exiting...\n");
                 break;
+            case 2:
+                // Add employee
+                printf("Enter ID: ");
+                scanf("%d",&id);
+                printf("Enter Name: ");
+                scanf("%s",name1);
+                printf("Enter Department: ");
+                scanf("%s", department1);
+                printf("Enter Designation: ");
+                scanf("%s",post1);
+                printf("Enter Salatry: ");
+                scanf("%f",&salary);
+                printf("Enter Contact Info: ");
+                scanf("%s",contactinfo1);
+                head=last(head,id,name1,department1,post1,salary,contactinfo1);
+                printf(" Employee added succesfull\n");
+                break;
+            case 3:
+                //remove employee
+                print(head);
+                printf("Which number do you want to remove:");
+                scanf("%d",&number); 
+                if (number==1)
+                {
+                    head=dltfirst(head);
+                }
+                else
+                {
+                    head=dltmid(head,number);
+                }
+                printf("Employee-%d removed succesfull\n",number);
+                printf("1. Main menu\n");
+                printf("2. Exit\n");
+                printf("Enter your choice: ");
+                scanf("%d", &button);
+                if(button==2){
+                    return 0;
+                }
+                else
+                {
+                    continue;
+                }
+                break;
+
             default:
                 printf("Invalid choice. Please enter a valid option.\n");
 
