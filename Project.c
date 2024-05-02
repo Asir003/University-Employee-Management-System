@@ -23,6 +23,18 @@ void displaymenu() {
     printf("6. Exit\n");
 }
 
+//void display menu for edit
+void displayedit()
+{
+    printf("\n1. Edit Id\n");
+    printf("2. Edit Name\n");
+    printf("3. Edit Department\n");
+    printf("4. Edit Designation\n");
+    printf("5. Edit Salary\n");
+    printf("6. Edit Contact Info\n");
+
+}
+
 //function for print the Employees details
 void print(struct employee *ptr)
 {
@@ -110,7 +122,8 @@ struct employee *dltmid(struct employee *head,int index)
 }
 //function for search employee
 void search(struct employee *ptr,char *idname)
-{   int i=1;
+{ 
+      int i=1;
     while(ptr->next !=NULL)
     {
         //char type kisu function e pass korle pointer use korte hbe
@@ -135,7 +148,67 @@ void search(struct employee *ptr,char *idname)
     printf("Inter the right id or name\n");
     
 }
+//function for edit number
+int find(struct employee *ptr,char *idname)
+{
+      int i=1;
+    while(ptr->next !=NULL)
+    {
+        //char type kisu function e pass korle pointer use korte hbe
+        //use atoi function that is compare with int in srting for pointer
+        if(strcmp(ptr->name, idname)==0 || ptr->id == atoi(idname ))
+        {
+            return i; 
+        }
+        else
+        {
+            ptr=ptr->next;
+        }
+        i++;
+    }
+}
 
+struct employee *editemployee(struct employee *head,int index,char *newname,int no)
+{
+    struct employee *t=head;
+    while(index >1)
+    {
+        t=t->next;
+        index--;
+    }
+    if(no==1)
+    {
+        t->id=atoi(newname);
+        return head;
+    }
+    else if(no==2)
+    {
+        strcpy(t->name,newname);
+        return head;
+    }
+    else if(no==3)
+    {
+        strcpy(t->department,newname);
+        return head;
+    }
+    else if(no==4)
+    {
+        strcpy(t->post,newname);
+        return head;
+    }
+    else if(no==5)
+    {
+        t->salary=atoi(newname);
+        return head;
+    }
+    else if(no==6)
+    {
+        strcpy(t->contactinfo,newname);
+        return head;
+    }
+    
+
+}              
 
 int main()
 {
@@ -176,15 +249,16 @@ int main()
     strcpy(fourth->contactinfo, "01521704220");
     fourth->next = NULL;
 
-     int choice,number;
+     int choice,number,edit,found;
      int button;
      int id;
-     char idname[100];
+     char idname[50];
      char name1[50];
      char department1[50];
      char post1[50];
      float salary;
      char contactinfo1[50];
+     char nid[50];
     do {
         displaymenu();
         printf("Enter your choice: ");
@@ -223,7 +297,7 @@ int main()
                 printf("Enter Contact Info: ");
                 scanf("%s",contactinfo1);
                 head=last(head,id,name1,department1,post1,salary,contactinfo1);
-                printf(" Employee added succesfull\n");
+                printf(" Employee added succesfully\n");
                 break;
             case 3:
                 //remove employee
@@ -254,8 +328,9 @@ int main()
             case 4:
                 //search employee
                 printf("Enter id or name: ");
-                scanf("%s", idname);
+                scanf("%s", idname);              
                 search(head, idname);
+                //menu bar
                 printf("\n\n1. Main menu\n");
                 printf("2. Exit\n");
                 printf("Enter your choice: ");
@@ -268,6 +343,54 @@ int main()
                     continue;
                 } 
                 break;
+            case 5:
+                //Edit employee details
+                printf("Enter id of the employee: ");
+                scanf("%s", idname);              
+                search(head, idname);
+                displayedit();
+                found=find(head,idname);
+                printf("Which details do you want to edit: ");
+                scanf("%d",&edit);
+                switch(edit)
+                {
+                    case 1:
+                        printf("Enter new Id: ");
+                        scanf("%s",nid); 
+                        head=editemployee(head,found,nid,edit);
+                        break;
+                    case 2:
+                        printf("Enter new Name: ");
+                        scanf("%s",nid); 
+                        head=editemployee(head,found,nid,edit);
+                        break;
+                    case 3: 
+                        printf("Enter new Department: ");
+                        scanf("%s",nid); 
+                        head=editemployee(head,found,nid,edit);
+                        break;
+                    case 4: 
+                        printf("Enter new Designation: ");
+                        scanf("%s",nid); 
+                        head=editemployee(head,found,nid,edit);
+                        break;   
+                    case 5: 
+                        printf("Enter new Salary: ");
+                        scanf("%s",nid); 
+                        head=editemployee(head,found,nid,edit);
+                        break;  
+                    case 6: 
+                        printf("Enter new Contact Info: ");
+                        scanf("%s",nid); 
+                        head=editemployee(head,found,nid,edit);
+                        break;
+                    default:
+                        printf("Invalid choice. Please enter a valid option.\n");
+                }
+                break;
+            case 6:
+                printf("Exit Successfully.........\n");
+                return 0;
             default:
                 printf("Invalid choice. Please enter a valid option.\n");
 
