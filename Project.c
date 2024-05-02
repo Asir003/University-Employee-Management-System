@@ -108,6 +108,34 @@ struct employee *dltmid(struct employee *head,int index)
     free(t2);
     return head;
 }
+//function for search employee
+void search(struct employee *ptr,char *idname)
+{   int i=1;
+    while(ptr->next !=NULL)
+    {
+        //char type kisu function e pass korle pointer use korte hbe
+        //use atoi function that is compare with int in srting for pointer
+        if(strcmp(ptr->name, idname)==0 || ptr->id == atoi(idname ))
+        {
+            printf("\nEmployee:%d\n",i);
+            printf("Id:%d || ",ptr->id);
+            printf("Name:%s || ",ptr->name);
+            printf("Department:%s || ",ptr->department);
+            printf("Designation:%s || ",ptr->post);
+            printf("Salary:%f || ",ptr->salary);
+            printf("Contact Info:%s || ",ptr->contactinfo); 
+            return ; 
+        }
+        else
+        {
+            ptr=ptr->next;
+        }
+        i++;
+    }
+    printf("Inter the right id or name\n");
+    
+}
+
 
 int main()
 {
@@ -116,7 +144,7 @@ int main()
     struct employee *third=(struct employee*)malloc(sizeof(struct employee));
     struct employee *fourth=(struct employee*)malloc(sizeof(struct employee));
 
-    head->id = 23215882;
+    head->id = 232;
     strcpy(head->name, "Asir Hamim");
     strcpy(head->department, "CSE");
     strcpy(head->post, "Lecturer");
@@ -151,6 +179,7 @@ int main()
      int choice,number;
      int button;
      int id;
+     char idname[100];
      char name1[50];
      char department1[50];
      char post1[50];
@@ -222,7 +251,23 @@ int main()
                     continue;
                 }
                 break;
-
+            case 4:
+                //search employee
+                printf("Enter id or name: ");
+                scanf("%s", idname);
+                search(head, idname);
+                printf("\n\n1. Main menu\n");
+                printf("2. Exit\n");
+                printf("Enter your choice: ");
+                scanf("%d", &button);
+                if(button==2){
+                    return 0;
+                }
+                else
+                {
+                    continue;
+                } 
+                break;
             default:
                 printf("Invalid choice. Please enter a valid option.\n");
 
