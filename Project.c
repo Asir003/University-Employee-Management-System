@@ -290,12 +290,25 @@ int main()
                 // Add employee
                 printf("Enter ID: ");
                 scanf("%d",&id);
-                printf("Enter Name: ");
-                scanf("%s",name1);
-                printf("Enter Department: ");
-                scanf("%s", department1);
-                printf("Enter Designation: ");
-                scanf("%s",post1);
+                while ((c = getchar()) != '\n' && c != EOF);
+                        printf("Enter Name: ");
+                        fgets(name1, sizeof(name1), stdin);
+                        size_t len3 = strlen(name1);
+                        if (len3 > 0 && name1[len3 - 1] == '\n') {
+                            name1[len3 - 1] = '\0';
+                        }
+                        printf("Enter Department: ");
+                        fgets(department1, sizeof(department1), stdin);
+                        size_t len4 = strlen(department1);
+                        if (len4 > 0 && department1[len4 - 1] == '\n') {
+                            department1[len4 - 1] = '\0';
+                        }
+                        printf("Enter Designation: ");
+                        fgets(post1, sizeof(post1), stdin);
+                        size_t len5 = strlen(post1);
+                        if (len5 > 0 && post1[len5 - 1] == '\n') {
+                            post1[len5 - 1] = '\0';
+                        }
                 printf("Enter Salary: ");
                 scanf("%f",&salary);
                 printf("Enter Contact Info: ");
