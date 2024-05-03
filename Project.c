@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+
 struct employee{
     int id;
     char name[50];
@@ -168,7 +170,7 @@ int find(struct employee *ptr,char *idname)
         i++;
     }
 }
-
+// update employee details
 struct employee *editemployee(struct employee *head,int index,char *newname,int no)
 {
     struct employee *t=head;
@@ -259,7 +261,8 @@ int main()
      char post1[50];
      float salary;
      char contactinfo1[50];
-     char nid[50];
+     char nid[100];
+     int c;
     do {
         displaymenu();
         printf("Enter your choice: ");
@@ -374,20 +377,38 @@ int main()
                         head=editemployee(head,found,nid,edit);
                         break;
                     case 2:
+                        while ((c = getchar()) != '\n' && c != EOF);
                         printf("Enter new Name: ");
-                        scanf("%s",nid); 
-                        head=editemployee(head,found,nid,edit);
+                        fgets(nid, sizeof(nid), stdin);
+                        // Remove the trailing newline character, if present
+                        size_t len = strlen(nid);
+                        if (len > 0 && nid[len - 1] == '\n') {
+                            nid[len - 1] = '\0';
+                        }
+                        head = editemployee(head, found, nid, edit);
                         break;
                     case 3: 
+                        while ((c = getchar()) != '\n' && c != EOF);
                         printf("Enter new Department: ");
-                        scanf("%s",nid); 
-                        head=editemployee(head,found,nid,edit);
+                        fgets(nid, sizeof(nid), stdin);
+                        // Remove the trailing newline character, if present
+                        size_t len1 = strlen(nid);
+                        if (len1 > 0 && nid[len1 - 1] == '\n') {
+                            nid[len1 - 1] = '\0';
+                        }
+                        head = editemployee(head, found, nid, edit);
                         break;
                     case 4: 
+                        while ((c = getchar()) != '\n' && c != EOF);
                         printf("Enter new Designation: ");
-                        scanf("%s",nid); 
-                        head=editemployee(head,found,nid,edit);
-                        break;   
+                        fgets(nid, sizeof(nid), stdin);
+                        // Remove the trailing newline character, if present
+                        size_t len2 = strlen(nid);
+                        if (len2 > 0 && nid[len2 - 1] == '\n') {
+                            nid[len2 - 1] = '\0';
+                        }
+                        head = editemployee(head, found, nid, edit);
+                        break;  
                     case 5: 
                         printf("Enter new Salary: ");
                         scanf("%s",nid); 
