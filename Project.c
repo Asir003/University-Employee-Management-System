@@ -272,7 +272,7 @@ int main()
         switch(choice)
         {
             case 1:
-                printf("\nEmployee List:\n");
+                printf("\t\t\t\t\t\t\tEmployee List:\n");
                 print(head);
                 printf("\n");
                 printf("1. Main menu\n");
