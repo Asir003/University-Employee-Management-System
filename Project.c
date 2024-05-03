@@ -357,8 +357,13 @@ int main()
                 break;
             case 4:
                 //search employee
-                printf("Enter id or name: ");
-                scanf("%s", idname);              
+                while ((c = getchar()) != '\n' && c != EOF);
+                        printf("Enter id or name: ");
+                        fgets(idname, sizeof(idname), stdin);
+                        size_t len6 = strlen(idname);
+                        if (len6 > 0 && idname[len6 - 1] == '\n') {
+                            idname[len6 - 1] = '\0';
+                        }             
                 search(head, idname);
                 //menu bar
                 printf("\n\n1. Main menu\n");
