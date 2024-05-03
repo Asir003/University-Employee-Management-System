@@ -35,6 +35,7 @@ void displayedit()
 
 }
 
+
 //function for print the Employees details
 void print(struct employee *ptr)
 {
@@ -292,12 +293,25 @@ int main()
                 scanf("%s", department1);
                 printf("Enter Designation: ");
                 scanf("%s",post1);
-                printf("Enter Salatry: ");
+                printf("Enter Salary: ");
                 scanf("%f",&salary);
                 printf("Enter Contact Info: ");
                 scanf("%s",contactinfo1);
                 head=last(head,id,name1,department1,post1,salary,contactinfo1);
-                printf(" Employee added succesfully\n");
+                printf(" Employee added successfully\n");
+                // short menu bar
+                printf("\n");
+                printf("1. Main menu\n");
+                printf("2. Exit\n");
+                printf("Enter your choice: ");
+                scanf("%d", &button);
+                if(button==2){
+                    return 0;
+                }
+                else
+                {
+                    continue;
+                }
                 break;
             case 3:
                 //remove employee
@@ -312,7 +326,7 @@ int main()
                 {
                     head=dltmid(head,number);
                 }
-                printf("Employee-%d removed succesfull\n",number);
+                printf("Employee-%d removed succesfully\n",number);
                 printf("1. Main menu\n");
                 printf("2. Exit\n");
                 printf("Enter your choice: ");
@@ -385,7 +399,20 @@ int main()
                         head=editemployee(head,found,nid,edit);
                         break;
                     default:
-                        printf("Invalid choice. Please enter a valid option.\n");
+                        printf("Invalid choice. Please enter a valid option.\n");      
+                }
+                printf(" Edited successfully\n");
+                printf("\n");
+                printf("1. Main menu\n");
+                printf("2. Exit\n");
+                printf("Enter your choice: ");
+                scanf("%d", &button);
+                if(button==2){
+                    return 0;
+                }
+                else
+                {
+                    continue;
                 }
                 break;
             case 6:
@@ -393,6 +420,7 @@ int main()
                 return 0;
             default:
                 printf("Invalid choice. Please enter a valid option.\n");
+                break;
 
         }
     }while(choice !=6);
