@@ -44,7 +44,7 @@ void print(struct employee *ptr)
     int i=1;
     while(ptr !=NULL)
     {
-        printf("Employee:%d\n",i);
+        printf("Employee-%d\n",i);
         printf("Id:%d || ",ptr->id);
         printf("Name:%s || ",ptr->name);
         printf("Department:%s || ",ptr->department);
@@ -350,8 +350,9 @@ int main()
                 break;
             case 3:
                 //remove employee
+                printf("\n");
                 print(head);
-                printf("Which number do you want to remove:");
+                printf("\n* Which number do you want to remove: ");
                 scanf("%d",&number); 
                 if (number==1)
                 {
@@ -361,8 +362,8 @@ int main()
                 {
                     head=dltmid(head,number);
                 }
-                printf("Employee-%d removed succesfully\n",number);
-                printf("1. Main menu\n");
+                printf("\t!...Employee-%d removed succesfully...!\n",number);
+                printf("\n1. Main menu\n");
                 printf("2. Exit\n");
                 printf("Enter your choice: ");
                 scanf("%d", &button);
