@@ -124,10 +124,11 @@ struct employee *dltmid(struct employee *head,int index)
     return head;
 }
 //function for search employee
-void search(struct employee *ptr,char *idname)
-{ 
+void search(struct employee *head,char *idname)
+{    
+      struct employee *ptr=head;
       int i=1;
-    while(ptr->next !=NULL)
+    while(ptr !=NULL)
     {
         //char type kisu function e pass korle pointer use korte hbe
         //use atoi function that is compare with int in srting for pointer
@@ -317,12 +318,30 @@ int main()
                 printf(" Employee added successfully\n");
                 // short menu bar
                 printf("\n");
-                printf("1. Main menu\n");
-                printf("2. Exit\n");
+                printf("1. View All Employees\n");
+                printf("2. Main Menu\n");
+                printf("3. Exit\n");
                 printf("Enter your choice: ");
                 scanf("%d", &button);
                 if(button==2){
                     return 0;
+                }
+                else if(button==1)
+                {
+                    printf("\nEmployee List:\n");
+                    print(head);
+                    printf("\n");
+                    printf("1. Main menu\n");
+                    printf("2. Exit\n");
+                    printf("Enter your choice: ");
+                    scanf("%d", &button);
+                    if(button==2){
+                        return 0;
+                    }
+                    else
+                    {
+                        continue;
+                    }
                 }
                 else
                 {
