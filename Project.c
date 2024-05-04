@@ -129,7 +129,7 @@ void search(struct employee *head,char *idname)
 {    
       struct employee *ptr=head;
       int i=1;
-      int attempts=0;
+      static int attempts=0;
     while(ptr !=NULL)
     {
         //char type kisu function e pass korle pointer use korte hbe
@@ -161,7 +161,7 @@ void search(struct employee *head,char *idname)
     
     else
     {
-    printf("Inter the right id or name\n");
+    printf("Inter the right id or name: ");
     fgets(idname, sizeof(idname), stdin);
     size_t len = strlen(idname);
     if (len > 0 && idname[len - 1] == '\n') {
