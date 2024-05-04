@@ -129,6 +129,7 @@ void search(struct employee *head,char *idname)
 {    
       struct employee *ptr=head;
       int i=1;
+      //for useing this the attempts will not be zero again
       static int attempts=0;
     while(ptr !=NULL)
     {
