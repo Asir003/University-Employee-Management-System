@@ -22,7 +22,8 @@ void displaymenu() {
     printf("3. Remove an employee\n");
     printf("4. Search an employee\n");
     printf("5. Edit employee details\n");
-    printf("6. Exit\n");
+    printf("6. Display Employees by Department\n");
+    printf("7. Exit\n");
 }
 
 //void display menu for edit
@@ -210,9 +211,29 @@ struct employee *editemployee(struct employee *head,int index,char *newname,int 
         strcpy(t->contactinfo,newname);
         return head;
     }
-    
+} 
 
-}              
+//function for Display Employees by Department
+void DepartmentDisplay(struct employee *head,char *DepartmentName)
+{
+      struct employee *ptr=head;
+      int i=1;
+      while(ptr !=NULL)
+      {
+        if(strcmp(ptr->department,DepartmentName)==0)
+        {
+            printf("Employee:%d\n",i);
+            printf("Id:%d || ",ptr->id);
+            printf("Name:%s || ",ptr->name);
+            printf("Department:%s || ",ptr->department);
+            printf("Designation:%s || ",ptr->post);
+            printf("Salary:%f || ",ptr->salary);
+            printf("Contact Info:%s || \n",ptr->contactinfo);          
+        }
+        ptr=ptr->next;
+        i++;
+      }
+}
 
 int main()
 {
@@ -231,7 +252,7 @@ int main()
 
     second->id = 23215882;
     strcpy(second->name, "Reyad");
-    strcpy(second->department, "CSE");
+    strcpy(second->department, "SEW");
     strcpy(second->post, "Lecturer");
     second->salary = 18000;
     strcpy(second->contactinfo, "01521704220");
@@ -247,13 +268,13 @@ int main()
 
     fourth->id = 23215882;
     strcpy(fourth->name, "Tanvir");
-    strcpy(fourth->department, "CSE");
+    strcpy(fourth->department, "Agri");
     strcpy(fourth->post, "Lecturer");
     fourth->salary = 18000;
     strcpy(fourth->contactinfo, "01521704220");
     fourth->next = NULL;
 
-     int choice,number,edit,found;
+     int choice,number,edit,found,totalEmployee;
      int button;
      int id;
      char idname[50];
@@ -264,6 +285,7 @@ int main()
      char contactinfo1[50];
      char nid[100];
      int c;
+     char DepartmentName[50];
     do {
         displaymenu();
         printf("Enter your choice: ");
@@ -475,6 +497,32 @@ int main()
                 }
                 break;
             case 6:
+                //Display Employees by Department
+                while ((c = getchar()) != '\n' && c != EOF);
+                    printf("Enter Department Name: ");
+                    fgets(DepartmentName, sizeof(DepartmentName), stdin);
+                    size_t len8 = strlen(DepartmentName);
+                    if (len8 > 0 && DepartmentName[len8 - 1] == '\n') {
+                        DepartmentName[len8 - 1] = '\0';
+                    }  
+                printf("\n"); 
+                printf("Department: ");
+                puts(DepartmentName); 
+                DepartmentDisplay(head,DepartmentName) ;
+                printf("\n1. Main menu\n");
+                printf("2. Exit\n");
+                printf("Enter your choice: ");
+                scanf("%d", &button);
+                if(button==2){
+                    return 0;
+                }
+                else
+                {
+                    continue;
+                }
+                break;
+
+            case 7:
                 printf("Exit Successfully.........\n");
                 return 0;
             default:
@@ -482,7 +530,7 @@ int main()
                 break;
 
         }
-    }while(choice !=6);
+    }while(choice !=7);
 
 
     return 0;
