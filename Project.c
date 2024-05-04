@@ -128,7 +128,7 @@ struct employee *dltmid(struct employee *head,int index)
 void search(struct employee *head,char *idname)
 {    
       struct employee *ptr=head;
-      int i=0;
+      int i=1;
       int attempts=0;
     while(ptr !=NULL)
     {
