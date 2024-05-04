@@ -128,7 +128,8 @@ struct employee *dltmid(struct employee *head,int index)
 void search(struct employee *head,char *idname)
 {    
       struct employee *ptr=head;
-      int i=1;
+      int i=0;
+      int attempts=0;
     while(ptr !=NULL)
     {
         //char type kisu function e pass korle pointer use korte hbe
@@ -148,10 +149,26 @@ void search(struct employee *head,char *idname)
         {
             ptr=ptr->next;
         }
-        i++;
+        i++;  
     }
-    printf("Inter the right id or name\n");
     
+    attempts++;
+    if (attempts >=3)
+    {
+        printf("You've exceeded the maximum number of attempts.\n");
+        return;
+    }
+    
+    else
+    {
+    printf("Inter the right id or name\n");
+    fgets(idname, sizeof(idname), stdin);
+    size_t len = strlen(idname);
+    if (len > 0 && idname[len - 1] == '\n') {
+        idname[len - 1] = '\0';
+    }
+    search(head, idname); 
+    } 
 }
 //function for edit number
 int find(struct employee *ptr,char *idname)
@@ -286,6 +303,7 @@ int main()
      char nid[100];
      int c;
      char DepartmentName[50];
+     int total;
     do {
         displaymenu();
         printf("Enter your choice: ");
@@ -405,7 +423,7 @@ int main()
                         size_t len6 = strlen(idname);
                         if (len6 > 0 && idname[len6 - 1] == '\n') {
                             idname[len6 - 1] = '\0';
-                        }             
+                        }         
                 search(head, idname);
                 //menu bar
                 printf("\n\n1. Main menu\n");
