@@ -364,7 +364,7 @@ int main()
                 printf("3. Exit\n");
                 printf("Enter your choice: ");
                 scanf("%d", &button);
-                if(button==2){
+                if(button==3){
                     return 0;
                 }
                 else if(button==1)
