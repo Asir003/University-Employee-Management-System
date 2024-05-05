@@ -255,6 +255,35 @@ void DepartmentDisplay(struct employee *head,char *DepartmentName)
 
 int main()
 {
+    int userId = 23215882;
+    char password[] = "asirhamim";
+    int UserId;
+    char Password[50];
+
+    printf("\t\t\t\t\t\t\tAdmin Login\n");
+    printf("\t\t\t\t\t\t   User Id: ");
+    scanf("%d", &UserId);
+    printf("\t\t\t\t\t    Enter Password: ");
+    scanf("%s", Password);
+
+    int attempts = 1;
+    while (userId != UserId || strcmp(password, Password) != 0) 
+    {
+        printf("Invalid User Id or Password\n");
+        printf("User Id: \n");
+        scanf("%d", &UserId);
+        printf("Enter Password: \n");
+        scanf("%s", Password);
+        attempts++;
+        if (attempts == 3) 
+        {
+            printf("Too many unsuccessful attempts. Try again later.\n");
+            return 0;
+        }
+    }
+
+    printf("Login successful!\n");
+    
     struct employee *head=(struct employee*)malloc(sizeof(struct employee));
     struct employee *second=(struct employee*)malloc(sizeof(struct employee));
     struct employee *third=(struct employee*)malloc(sizeof(struct employee));
