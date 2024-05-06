@@ -269,10 +269,10 @@ int main()
     int attempts = 1;
     while (userId != UserId || strcmp(password, Password) != 0) 
     {
-        printf("Invalid User Id or Password\n");
-        printf("User Id: \n");
+        printf("\t\t\t\t\t   !..Invalid User Id or Password..!\n");
+        printf("\t\t\t\t\t\t   User Id: ");
         scanf("%d", &UserId);
-        printf("Enter Password: \n");
+        printf("\t\t\t\t\t    Enter Password: ");
         scanf("%s", Password);
         attempts++;
         if (attempts == 3) 
