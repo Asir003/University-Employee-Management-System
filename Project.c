@@ -16,7 +16,7 @@ struct employee{
 
 //function for display menu
 void displaymenu() {
-    printf("\nEmployee Management System Menu:\n");
+    printf("\nUniversity Employee Management System Menu:\n");
     printf("1. Display All Employees\n");
     printf("2. Add Employee\n");
     printf("3. Remove an employee\n");
