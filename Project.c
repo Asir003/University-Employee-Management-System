@@ -269,6 +269,7 @@ int main()
     int attempts = 1;
     while (userId != UserId || strcmp(password, Password) != 0) 
     {
+        system("cls");
         printf("\t\t\t\t\t   !..Invalid User Id or Password..!\n");
         printf("\t\t\t\t\t\t   User Id: ");
         scanf("%d", &UserId);
@@ -282,6 +283,7 @@ int main()
         }
     }
 
+    system("cls");
     printf("Login successful!\n");
     
     struct employee *head=(struct employee*)malloc(sizeof(struct employee));
@@ -335,6 +337,7 @@ int main()
      char DepartmentName[50];
      int total;
     do {
+        system("cls");
         displaymenu();
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -342,6 +345,7 @@ int main()
         switch(choice)
         {
             case 1:
+                system("cls");
                 printf("\t\t\t\t\t\t\tEmployee List:\n");
                 print(head);
                 printf("\n");
@@ -359,6 +363,7 @@ int main()
                 break;
             case 2:
                 // Add employee
+                system("cls");
                 printf("Enter ID: ");
                 scanf("%d",&id);
                 while ((c = getchar()) != '\n' && c != EOF);
@@ -398,6 +403,7 @@ int main()
                 }
                 else if(button==1)
                 {
+                    system("cls");
                     printf("\nEmployee List:\n");
                     print(head);
                     printf("\n");
@@ -420,6 +426,7 @@ int main()
                 break;
             case 3:
                 //remove employee
+                system("cls");
                 printf("\n");
                 print(head);
                 printf("\n* Which number do you want to remove: ");
@@ -447,6 +454,7 @@ int main()
                 break;
             case 4:
                 //search employee
+                system("cls");
                 while ((c = getchar()) != '\n' && c != EOF);
                         printf("Enter id or name: ");
                         fgets(idname, sizeof(idname), stdin);
@@ -470,6 +478,7 @@ int main()
                 break;
             case 5:
                 //Edit employee details
+                system("cls");
                 printf("Enter id of the employee: ");
                 scanf("%s", idname);              
                 search(head, idname);
@@ -546,6 +555,7 @@ int main()
                 break;
             case 6:
                 //Display Employees by Department
+                system("cls");
                 while ((c = getchar()) != '\n' && c != EOF);
                     printf("Enter Department Name: ");
                     fgets(DepartmentName, sizeof(DepartmentName), stdin);
@@ -571,9 +581,11 @@ int main()
                 break;
 
             case 7:
+                system("cls");
                 printf("Exit Successfully.........\n");
                 return 0;
             default:
+                system("cls");
                 printf("Invalid choice. Please enter a valid option.\n");
                 break;
 
