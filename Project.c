@@ -175,7 +175,7 @@ void search(struct employee *head,char *idname)
 int find(struct employee *ptr,char *idname)
 {
       int i=1;
-    while(ptr->next !=NULL)
+    while(ptr !=NULL)
     {
         //char type kisu function e pass korle pointer use korte hbe
         //use atoi function that is compare with int in srting for pointer
@@ -221,7 +221,7 @@ struct employee *editemployee(struct employee *head,int index,char *newname,int 
     }
     else if(no==5)
     {
-        t->salary=atoi(newname);
+        t->salary=atof(newname);
         return head;
     }
     else if(no==6)
