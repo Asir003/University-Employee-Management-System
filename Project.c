@@ -370,13 +370,15 @@ int main()
                         printf("Enter Name: ");
                         fgets(name1, sizeof(name1), stdin);
                         size_t len3 = strlen(name1);
-                        if (len3 > 0 && name1[len3 - 1] == '\n') {
+                        if (len3 > 0 && name1[len3 - 1] == '\n') 
+                        {
                             name1[len3 - 1] = '\0';
                         }
                         printf("Enter Department: ");
                         fgets(department1, sizeof(department1), stdin);
                         size_t len4 = strlen(department1);
-                        if (len4 > 0 && department1[len4 - 1] == '\n') {
+                        if (len4 > 0 && department1[len4 - 1] == '\n') 
+                        {
                             department1[len4 - 1] = '\0';
                         }
                         printf("Enter Designation: ");
@@ -560,7 +562,8 @@ int main()
                     printf("Enter Department Name: ");
                     fgets(DepartmentName, sizeof(DepartmentName), stdin);
                     size_t len8 = strlen(DepartmentName);
-                    if (len8 > 0 && DepartmentName[len8 - 1] == '\n') {
+                    if (len8 > 0 && DepartmentName[len8 - 1] == '\n') 
+                    {
                         DepartmentName[len8 - 1] = '\0';
                     }  
                 printf("\n"); 
@@ -581,7 +584,7 @@ int main()
                 break;
 
             case 7:
-                system("cls");
+                //system("cls");
                 printf("Exit Successfully.........\n");
                 return 0;
             default:
