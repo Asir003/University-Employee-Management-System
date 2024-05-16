@@ -291,7 +291,7 @@ int main()
     struct employee *third=(struct employee*)malloc(sizeof(struct employee));
     struct employee *fourth=(struct employee*)malloc(sizeof(struct employee));
 
-    head->id = 232;
+    head->id = 23215882;
     strcpy(head->name, "Asir Hamim");
     strcpy(head->department, "CSE");
     strcpy(head->post, "Lecturer");
@@ -299,28 +299,28 @@ int main()
     strcpy(head->contactinfo, "01521704220");
     head->next = second;
 
-    second->id = 23215882;
-    strcpy(second->name, "Reyad");
+    second->id = 23215873;
+    strcpy(second->name, "K.M. Shakil Ahamed Reyad");
     strcpy(second->department, "SEW");
     strcpy(second->post, "Lecturer");
     second->salary = 18000;
-    strcpy(second->contactinfo, "01521704220");
+    strcpy(second->contactinfo, "01843592014");
     second->next = third;
 
-    third->id = 23215882;
-    strcpy(third->name, "Esha");
+    third->id = 23215891;
+    strcpy(third->name, "Tasmia Siddique");
     strcpy(third->department, "CSE");
     strcpy(third->post, "Lecturer");
     third->salary = 18000;
-    strcpy(third->contactinfo, "01521704220");
+    strcpy(third->contactinfo, "01685795805");
     third->next = fourth;
 
-    fourth->id = 23215882;
-    strcpy(fourth->name, "Tanvir");
+    fourth->id = 23215244;
+    strcpy(fourth->name, " Md.Tanvir Hasan");
     strcpy(fourth->department, "Agri");
     strcpy(fourth->post, "Lecturer");
     fourth->salary = 18000;
-    strcpy(fourth->contactinfo, "01521704220");
+    strcpy(fourth->contactinfo, "01751486377");
     fourth->next = NULL;
 
      int choice,number,edit,found,totalEmployee;
