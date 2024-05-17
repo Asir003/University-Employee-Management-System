@@ -259,17 +259,21 @@ int main()
     char password[] = "asirhamim";
     int UserId;
     char Password[50];
+    printf("\t\t\t\t\t\t-------------------------------------\n");
+    printf("\t\t\t\t\t\tUniversity Employee Management System\n");
+    printf("\t\t\t\t\t\t-------------------------------------\n");
 
-    printf("\t\t\t\t\t\t\tAdmin Login\n");
-    printf("\t\t\t\t\t\t   User Id: ");
+
+    printf("\t\t\t\t\t\t\t    Admin Login\n");
+    printf("\t\t\t\t\t\t       User Id: ");
     scanf("%d", &UserId);
-    printf("\t\t\t\t\t    Enter Password: ");
+    printf("\t\t\t\t\t        Enter Password: ");
     scanf("%s", Password);
 
     int attempts = 1;
     while (userId != UserId || strcmp(password, Password) != 0) 
     {
-        system("cls");
+        //system("cls");
         printf("\t\t\t\t\t   !..Invalid User Id or Password..!\n");
         printf("\t\t\t\t\t\t   User Id: ");
         scanf("%d", &UserId);
@@ -278,7 +282,8 @@ int main()
         attempts++;
         if (attempts == 3) 
         {
-            printf("Too many unsuccessful attempts. Try again later.\n");
+            printf("\n");
+            printf("\t\t\t\tToo many unsuccessful attempts. Try again later.\n");
             return 0;
         }
     }
@@ -301,7 +306,7 @@ int main()
 
     second->id = 23215873;
     strcpy(second->name, "K.M. Shakil Ahamed Reyad");
-    strcpy(second->department, "SEW");
+    strcpy(second->department, "SWE");
     strcpy(second->post, "Lecturer");
     second->salary = 18000;
     strcpy(second->contactinfo, "01843592014");
